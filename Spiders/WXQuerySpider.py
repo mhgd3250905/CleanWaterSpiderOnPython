@@ -48,6 +48,7 @@ class WXQuery:
             '_sug_type_':'',
             '':''
         }
+
         params['query']=keyWord
         params['page']='%d' % index
         params['t']='%d' %(time.time()*1000)

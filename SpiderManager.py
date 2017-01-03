@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Spiders import PaopaoSpider,WeixinSpider,ItHomeSpider,HXSpider,FHSpider,PWSpider,GGSpider,WXQuerySpider
+from Spiders import PaopaoSpider,WeixinSpider,ItHomeSpider,HXSpider,FHSpider,PWSpider,GGSpider,WXQuerySpider,WeixinBookSpider
 import threading
 import requests
 from HtmlUtils import HtmlGetUtils
@@ -35,7 +35,8 @@ def startSpider():
     GGThread = myThread(7, '硅谷密探', GGSpider.GG())
     PythonThread = myThread(8, 'Python', WXQuerySpider.WXQuery('python','PythonBean'))
     JSThread = myThread(9, 'JS', WXQuerySpider.WXQuery('javascript', 'JSBean'))
-
+    WXBookThread = myThread(9, 'JS', WeixinBookSpider.WXBook())
+    #
     PPThread.start()  # 泡泡网
     WXThread.start()  # 微信科技
     ITThread.start()  # IT之家
@@ -45,7 +46,8 @@ def startSpider():
     GGThread.start()  # 硅谷密探
     PythonThread.start()#微信Python
     JSThread.start()#微信JavaScript
-
+    WXBookThread.start()#微信订阅号
+    #
     PPThread.join()
     WXThread.join()
     ITThread.join()
@@ -55,6 +57,7 @@ def startSpider():
     GGThread.join()
     PythonThread.join()
     JSThread.join()
+    WXBookThread.join()
 
 
 

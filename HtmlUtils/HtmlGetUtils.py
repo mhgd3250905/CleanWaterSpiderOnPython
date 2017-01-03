@@ -28,6 +28,7 @@ def getHtml(url,params=0,headers=0):
     if params!=0:
         if headers==0:
             #如果参数params不为零那么说明来自泡泡网
+            print(requests.get(url,headers=baseHeaders,params=params).url)
             return requests.get(url,headers=baseHeaders,params=params).text
         else:
             mergedHeaders=dict(baseHeaders, **headers)
